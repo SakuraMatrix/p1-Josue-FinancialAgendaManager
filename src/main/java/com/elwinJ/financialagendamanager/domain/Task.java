@@ -1,25 +1,30 @@
 package com.elwinJ.financialagendamanager.domain;
 
+import java.time.LocalDate;
+
 public class Task {
 
-    private String taskSet;
+    private String setName;
     private String description;
     private String dueDate; //The date will be retrieved from an HTML form and proper formatting will be handled in the back-end.
     private String status;
 
     public Task(String taskSet, String description, String dueDate, String status) {
-        this.taskSet = taskSet;
+        this.setName = taskSet;
         this.description = description;
         this.dueDate = dueDate;
         this.status = status;
     }
 
-    public String getTaskSet() {
-        return taskSet;
+    public Task() {
     }
 
-    public void setTaskSet(String taskSet) {
-        this.taskSet = taskSet;
+    public String getSetName() {
+        return setName;
+    }
+
+    public void setSetName(String taskSet) {
+        this.setName = taskSet;
     }
 
     public String getDescription() {
