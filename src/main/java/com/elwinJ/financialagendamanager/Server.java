@@ -53,6 +53,10 @@ public class Server {
                                                 .map(Mapper::toByteBuf)
                                                 .log("http-server")))
 
+                                .post("/task-set/remove", (request,response) ->
+                                response.sendString(request.receive().asString().map(Parser::parseHTML).map(taskService::removeTask)))
+
+//                                .get()
 
                 )
                 .bindNow().onDispose().block();

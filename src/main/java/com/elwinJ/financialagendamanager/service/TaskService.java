@@ -23,4 +23,6 @@ public class TaskService {
     public Task createTask(Task task){
         return taskRepository.createTask(task);
     }
+
+    public String removeTask(String params) {return taskRepository.removeTask(params);}
 }

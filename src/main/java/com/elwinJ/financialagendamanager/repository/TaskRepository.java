@@ -41,4 +41,25 @@ public class TaskRepository {
 
         return task;
     }
+
+    public String removeTask(String params) {
+        String[] parsedParams = params.split("::::");
+        String setname = parsedParams[0];
+        String description = parsedParams[1];
+        System.out.println(setname);
+        System.out.println(description);
+
+        SimpleStatement stmt = SimpleStatement.builder("DELETE FROM task_database.tasks WHERE setname = ? AND description = ?")
+                .addPositionalValues(setname,description).build();
+
+        Flux.from(session.executeReactive(stmt)).subscribe();
+
+        return "Record removed";
+    }
+
+//    public static void main(String[] args) {
+//        removeTask("Set1::::Task=Finish Project 1");
+//
+//
+//    }
 }

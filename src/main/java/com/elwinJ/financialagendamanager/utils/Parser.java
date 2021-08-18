@@ -27,13 +27,23 @@ public class Parser {
         return task;
     }
 
-    public static void main(String[] args){
-        String test = "{\"setName\":\"Set2\",\"description\":\"Check dailes in RTS\",\"dueDate\":\"2021-09-01\",\"status\":\"on-going\"}";
-        Task task = parseTask(test);
-        System.out.println(task.getSetName());
-        System.out.println(task.getDescription());
-        System.out.println(task.getDueDate());
-        System.out.println(task.getStatus());
+    public static String parseHTML(String params){
+        String[] toBeParsed = params.split("&");
+        String setname = toBeParsed[0].split("=")[1];
+        String description = String.join(" ", toBeParsed[1].split("=")[1].split("\\+"));
 
+        return(setname + "::::" +description);
+    }
+
+    public static void main(String[] args){
+//        String test = "{\"setName\":\"Set2\",\"description\":\"Check dailes in RTS\",\"dueDate\":\"2021-09-01\",\"status\":\"on-going\"}";
+//        Task task = parseTask(test);
+//        System.out.println(task.getSetName());
+//        System.out.println(task.getDescription());
+//        System.out.println(task.getDueDate());
+//        System.out.println(task.getStatus());
+
+        String test = "TaskSetName=Set1&Task=Finish+Project+1";
+        System.out.println(parseHTML(test));
     }
 }
