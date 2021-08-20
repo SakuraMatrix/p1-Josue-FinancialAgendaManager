@@ -10,6 +10,8 @@
         <h1 class="form1">Welcome to Financial Manager</h1>
         <a href="/task-set">[Search Task Set]</a>
         <a href="https://www.google.com">[Search By Status]</a>
+        <hr>
+        <h2>To Add a Task</h2>
         <form method="post" action="/task-set">
             Task Set: <input name = "TaskSetName" type="text"/><br/>
             Task Description: <input name = "Task" type="text"/><br/>
@@ -17,11 +19,22 @@
             <button type="submit">Send</button>
         </form>
 
+        <hr>
+        <h2>To Delete a Task</h2>
         <form method="post" action="/task-set/remove">
             Task Set: <input name = "TaskSetName" type="text"/><br/>
             Task Description: <input name = "Task" type="text"/><br/>
             <button type="submit">Remove Task</button>
         </form>
+
+        <hr>
+        <h2>To Mark Task as Completed</h2>
+        <form method="post" action="/task-set/update">
+            Task Set: <input name="TaskSetName" type="text"/><br/>
+            Task Description: <input name = "Task" type="text"/><br/>
+            <button type="submit">Mark Completed</button>
+        </form>
+
 
     </body>
 </html>

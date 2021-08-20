@@ -56,6 +56,9 @@ public class Server {
                                 .post("/task-set/remove", (request,response) ->
                                 response.sendString(request.receive().asString().map(Parser::parseHTML).map(taskService::removeTask)))
 
+                                .post("/task-set/update", (request,response) ->
+                                        response.sendString(request.receive().asString().map(Parser::parseHTML).map(taskService::updateTask)))
+
 //                                .get()
 
                 )

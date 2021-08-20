@@ -5,6 +5,7 @@ import com.datastax.oss.driver.api.core.cql.SimpleStatement;
 import com.elwinJ.financialagendamanager.domain.Task;
 import reactor.core.publisher.Flux;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class TaskRepository {
@@ -43,18 +44,35 @@ public class TaskRepository {
     }
 
     public String removeTask(String params) {
-        String[] parsedParams = params.split("::::");
-        String setname = parsedParams[0];
-        String description = parsedParams[1];
-        System.out.println(setname);
-        System.out.println(description);
+        ArrayList<String> parsedParams = parseSetDescription(params);
 
         SimpleStatement stmt = SimpleStatement.builder("DELETE FROM task_database.tasks WHERE setname = ? AND description = ?")
-                .addPositionalValues(setname,description).build();
+                .addPositionalValues(parsedParams.get(0),parsedParams.get(1)).build();
 
         Flux.from(session.executeReactive(stmt)).subscribe();
 
         return "Record removed";
+    }
+
+    public String updateTask(String params){
+        ArrayList<String> parasedParams = parseSetDescription(params);
+
+        SimpleStatement stmt = SimpleStatement.builder("UPDATE task_database.tasks SET status = 'completed' WHERE setname = ? AND description = ? IF EXISTS")
+                .addPositionalValues(parasedParams.get(0),parasedParams.get(1)).build();
+
+        Flux.from(session.executeReactive(stmt)).subscribe();
+        return "Record Updated";
+    }
+
+    private ArrayList<String> parseSetDescription(String str){
+        ArrayList<String> stringArray = new ArrayList<String>();
+        String[] parsedParams = str.split("::::");
+        stringArray.add(parsedParams[0]); //setName
+        stringArray.add(parsedParams[1]); //description
+
+        //System.out.println(setname);
+        //System.out.println(description);
+        return stringArray;
     }
 
 //    public static void main(String[] args) {
