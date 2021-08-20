@@ -30,6 +30,7 @@ N/A
 - GET `/task-set/{params}` specifying a task set will respond with a retrival of records from the database that are only associated to the specified task set.
 - POST `/task-set` will send a request to the server being made up of a string from HTML in order to have it inserted into the database.
 - POST `/task-set/remove` will send a string from HTML to the server that will delete a record from the database.
+- POST `/task-set/update` will mark a task as updated.
 
 ## To-Do
 - Logging (Not using Log libraries, log will be externally saved in txt file and displayed on console as std out)
