@@ -5,8 +5,8 @@ Financial Agenda Manager is an app that will help users keep track of important 
 ## Features
 - Create tasks associated with a task set to keep tasks grouped as needed.
 - Delete tasks.
-- Update description and due date of a task.
 - Update the status of a task.
+- See Tasks by sets or as a whole.
 
 ## Technical
 - Java 8
@@ -14,8 +14,6 @@ Financial Agenda Manager is an app that will help users keep track of important 
 - Docker (cassandra container)
 - Reactor Netty
 - RESTful API standards
-- Logging (Not using Log libraries, log will be externally saved in txt file and displayed on console as std out)
-- JUnit 
 
 ## Database Schema
 Table Name: task
@@ -34,6 +32,5 @@ N/A
 - POST `/task-set/remove` will send a string from HTML to the server that will delete a record from the database.
 
 ## To-Do
-- Add CRUD functionality.
-- Create schema.
-- Create query endpoints.
+- Logging (Not using Log libraries, log will be externally saved in txt file and displayed on console as std out)
+- JUnit 
